@@ -5,19 +5,19 @@ import numpy as np
 import pandas as pd
 import shap
 
-# 加载随机森林模型
+# 加载LightGBM模型
 model = joblib.load('LGBM.pkl')
 
 # 定义特征名称（根据你的数据调整）
 feature_names = [
     "TT", "MCV", "PDW", "APTT", "PT", "TC"]
 
-# Streamlit 用户界
+# Streamlit 用户界面
 st.title("clinlabomics-based PACG Screening Model")
 
 # 用户输入特征数据
 TT = st.number_input("TT:", min_value=0.0, max_value=100.0, value=20.1)
-MCV = st.number_input("MCV:", min_value=0.0, max_value=200.0, value=98)
+MCV = st.number_input("MCV:", min_value=0.0, max_value=200.0, value=98.0)
 PDW = st.number_input("PDW:", min_value=0.0, max_value=100.0, value=13.6)
 APTT = st.number_input("APTT:", min_value=0.0, max_value=100.0, value=36.1)
 PT = st.number_input("PT:", min_value=0.0, max_value=100.0, value=13.3)
@@ -70,3 +70,4 @@ if st.button("Predict"):
     # 保存SHAP图并显示
     plt.savefig("shap_force_plot.png", bbox_inches='tight', dpi=1200)
     st.image("shap_force_plot.png")
+
