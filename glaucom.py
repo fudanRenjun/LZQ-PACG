@@ -61,13 +61,12 @@ if st.button("Predict"):
 
     # 根据预测结果生成并显示SHAP force plot
     if predicted_class == 1:
-        shap.force_plot(explainer.expected_value[1], shap_values[:, :, 1],
+        shap.force_plot(explainer.expected_value[1], shap_values[1],
                         pd.DataFrame([feature_values], columns=feature_names), matplotlib=True)
     else:
-        shap.force_plot(explainer.expected_value[0], shap_values[:, :, 0],
+        shap.force_plot(explainer.expected_value[0], shap_values[0],
                         pd.DataFrame([feature_values], columns=feature_names), matplotlib=True)
 
     # 保存SHAP图并显示
     plt.savefig("shap_force_plot.png", bbox_inches='tight', dpi=1200)
     st.image("shap_force_plot.png")
-
