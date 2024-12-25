@@ -16,12 +16,12 @@ feature_names = [
 st.title("clinlabomics-based PACG Screening Model")
 
 # 用户输入特征数据
-TT = st.number_input("TT:", min_value=0.0, max_value=100.0, value=1.66)
-MCV = st.number_input("MCV:", min_value=0.0, max_value=100.0, value=1.66)
-PDW = st.number_input("PDW:", min_value=0.0, max_value=100.0, value=1.66)
-APTT = st.number_input("APTT:", min_value=0.0, max_value=100.0, value=1.66)
-PT = st.number_input("PT:", min_value=0.0, max_value=100.0, value=1.66)
-TC = st.number_input("TC:", min_value=0.0, max_value=100.0, value=1.66)
+TT = st.number_input("TT:", min_value=0.0, max_value=100.0, value=0)
+MCV = st.number_input("MCV:", min_value=0.0, max_value=100.0, value=0)
+PDW = st.number_input("PDW:", min_value=0.0, max_value=100.0, value=0)
+APTT = st.number_input("APTT:", min_value=0.0, max_value=100.0, value=0)
+PT = st.number_input("PT:", min_value=0.0, max_value=100.0, value=0)
+TC = st.number_input("TC:", min_value=0.0, max_value=100.0, value=0)
 
 # 将输入的数据转化为模型的输入格式
 feature_values = [
@@ -36,7 +36,7 @@ if st.button("Predict"):
     predicted_proba = model.predict_proba(features)[0]
 
     # 显示预测结果
-    st.write(f"**Predicted Class:** {predicted_class} (0: Mild, 1: Severe)")
+    st.write(f"**Predicted Class:** {predicted_class} (0: normal, 1: PACG)")
     st.write(f"**Prediction Probabilities:** {predicted_proba}")
 
     # 根据预测结果提供建议
