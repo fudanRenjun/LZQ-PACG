@@ -13,7 +13,7 @@ feature_names = [
     "TT", "MCV", "PDW", "APTT", "PT", "TC"]
 
 # Streamlit 用户界面
-st.title("clinlabomics-based PACG Screening Model")
+st.title("Clinlabomics-based PACG Screening Model")
 
 # 用户输入特征数据
 TT = st.number_input("TT:", min_value=0.0, max_value=100.0, value=20.1)
@@ -35,9 +35,11 @@ if st.button("Predict"):
     predicted_class = model.predict(features)[0]
     predicted_proba = model.predict_proba(features)[0]
 
-    # 显示预测结果
+    # 显示预测结果，限制输出为小数点后两位
     st.write(f"**Predicted Class:** {predicted_class} (0: normal, 1: PACG)")
-    st.write(f"**Prediction Probabilities:** {predicted_proba}")
+    st.write(f"**Prediction Probabilities:**")
+    st.write(f"Normal: {predicted_proba[0]:.2f}")
+    st.write(f"PACG: {predicted_proba[1]:.2f}")
 
     # 根据预测结果提供建议
     probability = predicted_proba[predicted_class] * 100
@@ -45,12 +47,12 @@ if st.button("Predict"):
     if predicted_class == 1:
         advice = (
             f"According to our model, you have a high risk of PACG. "
-            f"The model predicts that your probability of having PACG is {probability:.1f}%. "
+            f"The model predicts that your probability of having PACG is {probability:.2f}%. "
         )
     else:
         advice = (
             f"According to our model, you have a low risk of PACG. "
-            f"The model predicts that your probability of not having PACG is {probability:.1f}%. "
+            f"The model predicts that your probability of not having PACG is {probability:.2f}%. "
         )
 
     st.write(advice)
