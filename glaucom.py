@@ -16,12 +16,12 @@ feature_names = [
 st.title("clinlabomics-based PACG Screening Model")
 
 # 用户输入特征数据
-TT = st.number_input("TT:", min_value=0.0, max_value=100.0, value=0)
-MCV = st.number_input("MCV:", min_value=0.0, max_value=100.0, value=0)
-PDW = st.number_input("PDW:", min_value=0.0, max_value=100.0, value=0)
-APTT = st.number_input("APTT:", min_value=0.0, max_value=100.0, value=0)
-PT = st.number_input("PT:", min_value=0.0, max_value=100.0, value=0)
-TC = st.number_input("TC:", min_value=0.0, max_value=100.0, value=0)
+TT = st.number_input("TT:", min_value=-1, max_value=100.0, value=0)
+MCV = st.number_input("MCV:", min_value=-1, max_value=100.0, value=0)
+PDW = st.number_input("PDW:", min_value=-1, max_value=100.0, value=0)
+APTT = st.number_input("APTT:", min_value=-1, max_value=100.0, value=0)
+PT = st.number_input("PT:", min_value=-1, max_value=100.0, value=0)
+TC = st.number_input("TC:", min_value=-1, max_value=100.0, value=0)
 
 # 将输入的数据转化为模型的输入格式
 feature_values = [
