@@ -6,7 +6,7 @@ import pandas as pd
 import shap
 
 # 加载随机森林模型
-model = joblib.load('E:/streamlit/shimei-glaucoma/LGBM.pkl')
+model = joblib.load('LGBM.pkl')
 
 # 定义特征名称（根据你的数据调整）
 feature_names = [
